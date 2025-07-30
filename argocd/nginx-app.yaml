@@ -10,10 +10,10 @@ spec:
   source:
     repoURL: https://github.com/MinimalDevops/kroandkargo.git
     targetRevision: HEAD
-    path: helm-chart
+    path: .
     helm:
       valueFiles:
-        - ../overlays/dev/values.yaml
+        - overlays/dev/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: nginx-app-dev
