@@ -12,4 +12,12 @@ spec:
         name: nginx-warehouse
       sources:
         stages:
-          - dev 
+          - dev
+  promotionTemplate:
+    spec:
+      steps:
+        - uses: helm
+          config:
+            chart: helm-chart
+            valuesFiles:
+              - ../overlays/staging/values.yaml 

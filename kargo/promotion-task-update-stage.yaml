@@ -1,0 +1,17 @@
+apiVersion: kargo.akuity.io/v1alpha1
+kind: ClusterPromotionTask
+metadata:
+  name: update-stage
+spec:
+  steps:
+    - uses: apply
+      config:
+        manifests:
+          - apiVersion: v1
+            kind: ConfigMap
+            metadata:
+              name: stage-update-trigger
+              namespace: nginx-app-staging
+            data:
+              updated: "true"
+              timestamp: "2025-07-30T22:30:00Z" 

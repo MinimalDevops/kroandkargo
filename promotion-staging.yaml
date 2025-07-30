@@ -1,0 +1,14 @@
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Promotion
+metadata:
+  name: promote-to-staging
+  namespace: nginx-demo
+spec:
+  stage: staging
+  freight: 9ffe479d9bcf1e4e27ad2d581fcd9b00c566dfc9
+  steps:
+    - apply:
+        manifests:
+          - path: helm-chart
+            valuesFiles:
+              - overlays/staging/values.yaml 
