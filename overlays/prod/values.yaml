@@ -1,0 +1,14 @@
+# Production environment overlay
+replicaCount: 1
+
+image:
+  repository: nginx
+  tag: "stable"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+# No resource limits for minimal laptop testing
+# Autoscaling disabled for single cluster setup 

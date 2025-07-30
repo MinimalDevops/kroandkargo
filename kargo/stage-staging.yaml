@@ -1,0 +1,15 @@
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Stage
+metadata:
+  name: staging
+  namespace: nginx-demo
+  labels:
+    kargo.akuity.io/project: nginx-demo
+spec:
+  requestedFreight:
+    - origin:
+        kind: Warehouse
+        name: nginx-warehouse
+      sources:
+        stages:
+          - dev 

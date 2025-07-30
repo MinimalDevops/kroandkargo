@@ -1,0 +1,21 @@
+apiVersion: kro.kargo.akuity.io/v1alpha1
+kind: Krofile
+metadata:
+  name: nginx-app
+spec:
+  chart:
+    name: helm-chart
+    version: 0.1.0
+  overlays:
+    - name: dev
+      path: overlays/dev
+      values:
+        - values.yaml
+    - name: staging
+      path: overlays/staging
+      values:
+        - values.yaml
+    - name: prod
+      path: overlays/prod
+      values:
+        - values.yaml 
