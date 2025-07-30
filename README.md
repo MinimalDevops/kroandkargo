@@ -104,6 +104,8 @@ kubectl apply -f argocd/nginx-app-staging.yaml
 kubectl apply -f argocd/nginx-app-prod.yaml
 ```
 
+**Note**: The ArgoCD applications include a `sync-wave: "0"` annotation to ensure proper initial synchronization. This helps resolve the "Unknown" sync status issue that can occur with automated sync policies.
+
 ### 5. Port Forwarding Setup
 
 Use PM2 to manage port forwards:

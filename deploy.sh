@@ -129,6 +129,12 @@ kubectl wait --for=condition=Healthy application/nginx-app-dev -n argocd --timeo
 kubectl wait --for=condition=Healthy application/nginx-app-staging -n argocd --timeout=60s
 kubectl wait --for=condition=Healthy application/nginx-app-prod -n argocd --timeout=60s
 
+# Trigger initial sync if needed
+print_status "Triggering initial sync for ArgoCD applications..."
+kubectl patch application nginx-app-dev -n argocd --type='merge' -p='{"metadata":{"annotations":{"argocd.argoproj.io/sync-wave":"0"}}}' 2>/dev/null || true
+kubectl patch application nginx-app-staging -n argocd --type='merge' -p='{"metadata":{"annotations":{"argocd.argoproj.io/sync-wave":"0"}}}' 2>/dev/null || true
+kubectl patch application nginx-app-prod -n argocd --type='merge' -p='{"metadata":{"annotations":{"argocd.argoproj.io/sync-wave":"0"}}}' 2>/dev/null || true
+
 print_status "All resources deployed successfully!"
 
 # Start port forwarding
